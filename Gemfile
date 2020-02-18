@@ -28,6 +28,15 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Manage environment variables
+  gem "dotenv-rails"
+  # Behavior driven development
+  gem "rspec-rails", "~> 3.9"
+  # Ruby code linter
+  gem "rubocop", "~> 0.78.0"
+  gem "rubocop-rails_config"
+  # Environment variable management
+  gem 'dotenv', '~> 2.7', '>= 2.7.5'
 end
 
 group :development do
