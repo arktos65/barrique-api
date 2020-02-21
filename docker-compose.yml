@@ -1,0 +1,46 @@
+version: '3'
+volumes:
+  auth-data:
+services:
+  # Barrique database server
+  barrique-db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    volumes:
+      # Use this option to persist the MySQL DBs in a shared volume.
+      #- ./mysqldata:/var/lib/mysql:rw,delegated
+      # Use this option to persist the MySQL DBs in a data volume.
+      - auth-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "Ebtylor1871!"
+      MYSQL_ROOT_HOST: "%"
+    restart:  always
+    labels:
+      kompose.volume.size: 1Gi
+  # OAuth application server
+  barrique-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: tgwconsulting/barrique-api:latest
+    entrypoint: ["/opt/tgw/app/lib/docker-entrypoint.sh"]
+    command: ["rails","server","-b","0.0.0.0","-p","3010"]
+    ports:
+      - "3010:3010"
+    deploy:
+      replicas: 2
+    links:
+      - barrique-db
+      - barrique-cache
+    environment:
+      RAILS_ENV: development
+    restart:  always
+    labels:
+      kompose.service.type: nodeport
+      kompose.service.expose: api.barriquesoft.local
+  # OAuth cache
+  barrique-cache:
+    image: redis:5.0
+    ports:
+      - "6379:6379"
