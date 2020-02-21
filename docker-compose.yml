@@ -3,7 +3,7 @@ volumes:
   auth-data:
 services:
   # Barrique database server
-  api-db:
+  barrique-db:
     image: mysql:5.7
     ports:
       - "3306:3306"
@@ -19,7 +19,7 @@ services:
     labels:
       kompose.volume.size: 1Gi
   # OAuth application server
-  api-server:
+  barrique-server:
     build:
       context: .
       dockerfile: Dockerfile
@@ -31,8 +31,8 @@ services:
     deploy:
       replicas: 2
     links:
-      - api-db
-      - api-cache
+      - barrique-db
+      - barrique-cache
     environment:
       RAILS_ENV: development
     restart:  always
@@ -40,7 +40,7 @@ services:
       kompose.service.type: nodeport
       kompose.service.expose: api.barriquesoft.local
   # OAuth cache
-  api-cache:
+  barrique-cache:
     image: redis:5.0
     ports:
       - "6379:6379"

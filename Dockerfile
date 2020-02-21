@@ -30,4 +30,4 @@ FROM build_1 AS build_2
 
 # Entry point for development server
 EXPOSE 3010
-RUN bundle exec rake assets:precompile --trace
+#RUN bundle exec rake assets:precompile --trace
