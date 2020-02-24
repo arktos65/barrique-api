@@ -52,5 +52,4 @@ production:
   <<: *default
   database: barrique_production
   username: barrique
-  password: <%= ENV["BARRIQUE_DATABASE_PASSWORD"] %>
-
+  password: <%= ENV["TGW-AUTH_DATABASE_PASSWORD"] %>
