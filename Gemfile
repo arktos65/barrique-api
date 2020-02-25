@@ -12,7 +12,7 @@ gem "mysql2", ">= 0.4.4"
 # Use Puma as the app server
 gem "puma", "~> 4.1"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'jbuilder', '~> 2.7'
+gem "jbuilder", "~> 2.7"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -34,6 +34,7 @@ group :development, :test do
   gem "dotenv-rails"
   # Behavior driven development
   gem "rspec-rails", "~> 3.9"
+  gem "rswag-specs", "~> 2.2"
   # Ruby code linter
   gem "rubocop", "~> 0.78.0"
   gem "rubocop-rails_config"
@@ -48,5 +49,16 @@ group :development do
   gem "spring-watcher-listen", "~> 2.0.0"
 end
 
+group :test do
+  # Automation tools for RSpec tests
+  gem "database_cleaner"
+  gem "factory_bot_rails", "~> 5.1", ">= 5.1.1"
+  gem "faker"
+  gem "shoulda-matchers", "~> 4.3", ">= 4.3.0"
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Swagger Docs and API spec
+gem "rswag", "~> 2.2"
