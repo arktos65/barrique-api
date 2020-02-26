@@ -120,10 +120,10 @@ You should see:
     * Version 3.12.1 (ruby 2.5.1-p57), codename: Llamas in Pajamas
     * Min threads: 5, max threads: 5
     * Environment: development
-    * Listening on tcp://localhost:3000
+    * Listening on tcp://localhost:3010
     Use Ctrl-C to stop
     
-Now open your web browser and type in `http://localhost:3000/api/v1/ping`.  If the API server is healthy,
+Now open your web browser and type in `http://localhost:3010/api/v1/ping`.  If the API server is healthy,
 you should receive a JSON response that looks something like:
 
     {
@@ -141,7 +141,7 @@ by pressing CTRL-C in the terminal window where it is running.
 ### User Login
 
 The OAuth development environment is seeded with a user for testing purposes. You can login by
-pointing your web browser at `http://localhost:3000/users/sign_in`.
+pointing your web browser at `http://localhost:3010/users/sign_in`.
 
 **Development Credentials**
 
@@ -153,7 +153,7 @@ These credentials are only available on your development instance.
 ### Admin Login
 
 The OAuth development environment is seeded with an admin user for testing purposes.  You can
-login by pointing your web browser at `http://localhost:3000/admins/sign_in`.
+login by pointing your web browser at `http://localhost:3010/admins/sign_in`.
 
 **Development Credentials**
 
@@ -165,7 +165,7 @@ These credentials are only available on your development instance.
 ### OAuth Applications
 
 Admin users can manage OAuth applications registered with this provider by pointing your web
-browser at `http://localhost:3000/oauth/applications`.
+browser at `http://localhost:3010/oauth/applications`.
 
 ## Generating API Documentation
 
@@ -173,7 +173,7 @@ This project using `rswagger` for generating API developer documentation.  To up
 
     rake rswag:specs:swaggerize
     
-The documentation is accessible at `http://localhost:3000/api-docs`.
+The documentation is accessible at `http://localhost:3010/api-docs`.
 
 ## Building a Docker Image
 
@@ -186,7 +186,7 @@ If you wish to manually build an image, use the following command from the proje
     $ docker-compose build
     
 The resulting image will be stored in your local Docker image repository.  The image will be titled
-`tgwconsulting/tgw-oauth:latest`.
+`tgwconsulting/barrique-api:latest`.
 
 ## Running Your Development Environment
 
@@ -229,20 +229,20 @@ To perform a graceful shutdown of your development environment:
     INFO Successfully deleted PersistentVolumeClaim: barrique-data 
     INFO Successfully deleted Deployment: barrique-server 
 
-### Testing OAuth Server
+### Testing Barrique API Server
 
 Once you have deployed the Rails application to your local Kubernetes cluster, you'll need to forward the port
 to the `barrique-server` service.  This can be done with the command:
 
-    $ kubectl port-forward deployment/auth-server 3000
+    $ kubectl port-forward deployment/barrique-server 3010
     
-Direct your web browser to `http://localhost:3000` to access the service.
+Direct your web browser to `http://localhost:3010` to access the service.
 
 ### Examining a Docker Image
 
 If you need to explore the contents of the Docker image, you may do so with the following command:
 
-    $ docker run --rm -it --entrypoint=/bin/bash tgwconsulting/tgw-oauth
+    $ docker run --rm -it --entrypoint=/bin/bash tgwconsulting/barrique-api
     
 Docker will start a container with a `bash` shell.  This command is useful for checking service source code.
 
