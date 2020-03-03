@@ -1,12 +1,12 @@
 # Barrique API
 
-[![Build Status](https://tgwconsulting.visualstudio.com/barrique/_apis/build/status/tgw-auth-build-master?branchName=master)](https://tgwconsulting.visualstudio.com/barrique/_build/latest?definitionId=35&branchName=master)
+[![Build Status](https://tgwconsulting.visualstudio.com/barrique/_apis/build/status/barrique-api-build-master?branchName=master)](https://tgwconsulting.visualstudio.com/barrique/_build/latest?definitionId=32&branchName=master)
 
 This document provides an overview of the Barrique REST API for
 web, mobile, and native applications accessing TGW services.  You
 will also find instructions for setting up development and test environments.
 
-**Requirements:** Ruby ~> v2.5.4, Rails ~> v5.2.2, MySQL Server ~> 5.7, Docker Desktop ~> 2.2.0.0
+**Requirements:** Ruby ~> v2.6.3, Rails ~> v6.0.2.1, MySQL Server ~> 5.7, Docker Desktop ~> 2.2.0.0
 
 ## Development Prerequisites
 
@@ -33,12 +33,12 @@ snippet can be used to create your environment:
 
     $ rvm use 2.6.3
     $ rvm gemset create tgw
-    $ rvm use 2.6.3@barrique
+    $ rvm use 2.6.3@barrique-api
     $ gem install bundler
     
 You can set your gemset to be the default by using the command:
 
-    $ rvm use 2.6.3@barrique --default
+    $ rvm use 2.6.3@barrique-api --default
     
 ### Setting Up Docker Environment
 
@@ -84,19 +84,19 @@ set your database credentials to.
 
 From the root source code directory:
 
-    $ rvm use 2.6.3@barrique
+    $ rvm use 2.6.3@barrique-api
     $ docker-compose up barrique-db
     
 Open a new terminal window and then:
 
-    $ rvm use 2.6.3@barrique
+    $ rvm use 2.6.3@barrique-api
     $ rails db:create db:migrate
     $ rails db:seed
     
 You should see some messages starting with:
 
-    Created database 'tgw-auth_development'
-    Created database 'tgw-auth_test'
+    Created database 'barrique_development'
+    Created database 'barrique_test'
     Task seed:
      * [  ] User (seed)
      * [OK] User (seed)
