@@ -1,10 +1,23 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+# spec/swagger_helper.rb
+#
+# Copyright 2020 TGW Consulting, LLC. All rights reserved.
+#
+# This source code is proprietary, confidential information of TGW Consulting, LLC.
+# It contains TGW Consulting intellectual property, including trade secrets and
+# copyright-protected authorship, and may include patentable inventions. You may
+# not distribute this source code outside of TGW Consulting without express written
+# permission from management. TGW Consulting does not claim ownership of included
+# open source software components, which are subject to their own licenses.
+#
+require "rails_helper"
 
 RSpec.configure do |config|
   # Specify a root folder where Swagger JSON files are generated
   # NOTE: If you're using the rswag-api to serve API descriptions, you'll need
   # to ensure that it's configured to serve Swagger from the same folder
-  config.swagger_root = Rails.root.join('swagger').to_s
+  config.swagger_root = Rails.root.join("swagger").to_s
 
   # Define one or more Swagger documents and provide global metadata for each one
   # When you run the 'rswag:specs:swaggerize' rake task, the complete Swagger will
@@ -13,11 +26,11 @@ RSpec.configure do |config|
   # document below. You can override this behavior by adding a swagger_doc tag to the
   # the root example_group in your specs, e.g. describe '...', swagger_doc: 'v2/swagger.json'
   config.swagger_docs = {
-    'v1/swagger.yaml' => {
-      openapi: '3.0.1',
+    "v1/swagger.yaml" => {
+      openapi: "3.0.1",
       info: {
-        title: 'API V1',
-        version: 'v1'
+        title: "Barrique API V1",
+        version: "v1"
       },
       paths: {}
     }
