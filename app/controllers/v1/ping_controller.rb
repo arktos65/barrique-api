@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# app/controllers/application_controller.rb
+# app/controllers/v1/ping_controller.rb
 #
 # Copyright 2020 TGW Consulting, LLC. All rights reserved.
 #
@@ -11,6 +11,21 @@
 # permission from management. TGW Consulting does not claim ownership of included
 # open source software components, which are subject to their own licenses.
 #
+require "date"
 
-class ApplicationController < ActionController::API
+module V1
+  # /v1/ping route
+  class PingController < ApiController
+    # GET /v1/ping
+    # Returns JSON formatted message and HTTP status code indicating service is responding.
+    def index
+      current_time = DateTime.now.to_datetime
+      render json: {
+          service: service_name,
+          version: service_version,
+          message: "Hello World",
+          timestamp: current_time
+      }, status: 200
+    end
+  end
 end

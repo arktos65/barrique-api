@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# app/controllers/application_controller.rb
+# app/controllers/v1/api_controller.rb
 #
 # Copyright 2020 TGW Consulting, LLC. All rights reserved.
 #
@@ -11,6 +11,7 @@
 # permission from management. TGW Consulting does not claim ownership of included
 # open source software components, which are subject to their own licenses.
 #
+require "rails_helper"
 
-class ApplicationController < ActionController::API
+RSpec.describe V1::PingController, type: :controller do
 end
