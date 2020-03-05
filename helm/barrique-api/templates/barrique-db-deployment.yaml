@@ -1,0 +1,45 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert --chart
+    kompose.version: 1.20.0 ()
+    kompose.volume.size: 5Gi
+  creationTimestamp: null
+  labels:
+    io.kompose.service: barrique-db
+  name: barrique-db
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert --chart
+        kompose.version: 1.20.0 ()
+        kompose.volume.size: 5Gi
+      creationTimestamp: null
+      labels:
+        io.kompose.service: barrique-db
+    spec:
+      containers:
+      - env:
+        - name: MYSQL_ROOT_HOST
+          value: '%'
+        - name: MYSQL_ROOT_PASSWORD
+          value: Ebtylor1871!
+        image: mysql:5.7
+        name: barrique-db
+        ports:
+        - containerPort: 3306
+        resources: {}
+        volumeMounts:
+        - mountPath: /var/lib/mysql
+          name: barrique-data
+      restartPolicy: Always
+      volumes:
+      - name: barrique-data
+        persistentVolumeClaim:
+          claimName: barrique-data
+status: {}

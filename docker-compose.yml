@@ -1,6 +1,6 @@
 version: '3'
 volumes:
-  auth-data:
+  barrique-data:
 services:
   # Barrique database server
   barrique-db:
@@ -11,7 +11,7 @@ services:
       # Use this option to persist the MySQL DBs in a shared volume.
       #- ./mysqldata:/var/lib/mysql:rw,delegated
       # Use this option to persist the MySQL DBs in a data volume.
-      - auth-data:/var/lib/mysql
+      - barrique-data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: "Ebtylor1871!"
       MYSQL_ROOT_HOST: "%"
